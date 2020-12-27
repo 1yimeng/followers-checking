@@ -41,8 +41,10 @@ try:
 except ValueError:
     all_followers = list(all_followers)
     del all_followers[1]
-    "".join(all_followers)
-    all_following = int(all_followers)
+    again = "".join(all_followers)
+    all_followers = int(again)
+
+print("You have %d followers." % all_followers)
 
 scroll_times = int(math.floor(all_followers/12)+1)  # rounds down and ad one for the rest
 for i in range(scroll_times):
@@ -53,6 +55,7 @@ for i in range(scroll_times):
         fDialog.scrollTop = fDialog.scrollHeight
     ''')
     time.sleep(2)
+print(len(real_names))
 
 xclose = driver.find_element_by_xpath("/html/body/div[5]/div/div/div[1]/div/div[2]/button")
 xclose.click()
@@ -69,18 +72,23 @@ try:
 except ValueError:
     all_following = list(all_following)
     del all_following[1]
-    "".join(all_following)
-    all_following = int(all_following)
+    new = "".join(all_following)
+    all_following = int(new)
+
+print("You are following %d people." % all_following)
 
 scroll_times2 = int(math.floor(all_following/12)+1)  # rounds down and ad one for the rest
+print(scroll_times2)
 for i in range(scroll_times2):
-    following_names = driver.find_elements_by_xpath("//span[@class='Jv7Aj mArmR MqpiF  ']")  # hardcoded tag, fix for later use
+    following_names = driver.find_elements_by_xpath("//span[@class='Jv7Aj mArmR MqpiF  ']")
     following_total = [x.text for x in following_names]
     driver.execute_script('''
         var fDialog = document.querySelector('div[role="dialog"] .isgrP');
         fDialog.scrollTop = fDialog.scrollHeight
     ''')
     time.sleep(2)
+
+print(len(following_total))
 
 not_following_back = []
 for i in range(all_following):
