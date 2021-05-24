@@ -55,7 +55,8 @@ for i in range(scroll_times):
         fDialog.scrollTop = fDialog.scrollHeight
     ''')
     time.sleep(2)
-print(len(real_names))
+
+print(f'The collected number of followers is {len(real_names)}.')
 
 xclose = driver.find_element_by_xpath("/html/body/div[5]/div/div/div[1]/div/div[2]/button")
 xclose.click()
@@ -78,7 +79,7 @@ except ValueError:
 print("You are following %d people." % all_following)
 
 scroll_times2 = int(math.floor(all_following/12)+1)  # rounds down and ad one for the rest
-print(scroll_times2)
+# print(scroll_times2)
 for i in range(scroll_times2):
     following_names = driver.find_elements_by_xpath("//span[@class='Jv7Aj mArmR MqpiF  ']")
     following_total = [x.text for x in following_names]
@@ -88,7 +89,7 @@ for i in range(scroll_times2):
     ''')
     time.sleep(2)
 
-print(len(following_total))
+print(f'The collected number of following users is {len(following_total)}.')
 
 not_following_back = []
 for i in range(all_following):
